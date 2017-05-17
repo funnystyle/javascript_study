@@ -1,4 +1,4 @@
-# javascript_study
+# About javascript prototype
 ## Example 1
 ```javascript
 var A = function() {
@@ -35,4 +35,12 @@ console.log(new C().c()); // Uncaught TypeError: C is not a constructor
 
 console.log(D.d()); 	  // Uncaught TypeError: D.d is not a function
 console.log(new D().d()); // D
+```
+
+## Example 3
+```javascript
+var E = {};
+E.prototype.e = function () { // Uncaught TypeError: Cannot set property 'e' of undefined
+	return null;
+}
 ```
