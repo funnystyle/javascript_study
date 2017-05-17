@@ -2,7 +2,7 @@
 ## Example 1
 ```javascript
 var A = function() {
-	this.a = 1;
+    this.a = 1;
 };
 A.prototype.b = 2;
 A.c = 3;
@@ -22,12 +22,12 @@ console.log(X.c); // undefined
 ```javascript
 var C = {};
 C.c = function() {
-	return "C";
+    return "C";
 }
 
 var D = function() {};
 D.prototype.d = function() {
-	return "D";
+    return "D";
 }
 
 console.log(C.c()); 	  // C
@@ -41,6 +41,6 @@ console.log(new D().d()); // D
 ```javascript
 var E = {};
 E.prototype.e = function () { // Uncaught TypeError: Cannot set property 'e' of undefined
-	return null;
+    return null;
 }
 ```
