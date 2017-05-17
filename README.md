@@ -44,3 +44,6 @@ E.prototype.e = function () { // Uncaught TypeError: Cannot set property 'e' of 
     return null;
 }
 ```
+
+## Links
+http://insanehong.kr/post/javascript-prototype/
