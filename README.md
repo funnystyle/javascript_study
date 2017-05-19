@@ -20,7 +20,7 @@ console.log(X.b); // undefined
 console.log(X.c); // 3
 console.log(X.d); // undefined
 
-console.log(b);
+console.log(b);   // 2
 ```
 
 ## Example 2
