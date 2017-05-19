@@ -3,19 +3,24 @@
 ```javascript
 var A = function() {
     this.a = 1;
+    b = 2
 };
-A.prototype.b = 2;
-A.c = 3;
+A.prototype.c = 3;
+A.d = 4;
 
 var X = new A();
 
 console.log(A.a); // undefined
 console.log(A.b); // undefined
-console.log(A.c); // 3
+console.log(A.c); // undefined
+console.log(A.d); // 4
 
 console.log(X.a); // 1
-console.log(X.b); // 2
-console.log(X.c); // undefined
+console.log(X.b); // undefined
+console.log(X.c); // 3
+console.log(X.d); // undefined
+
+console.log(b);
 ```
 
 ## Example 2
