@@ -4,21 +4,24 @@
 var A = function() {
     this.a = 1;
     b = 2
+    var c = 3;
 };
-A.prototype.c = 3;
-A.d = 4;
+A.prototype.d = 4;
+A.e = 5;
 
 var X = new A();
 
 console.log(A.a); // undefined
 console.log(A.b); // undefined
 console.log(A.c); // undefined
-console.log(A.d); // 4
+console.log(A.d); // undefined
+console.log(A.e); // 5
 
 console.log(X.a); // 1
 console.log(X.b); // undefined
-console.log(X.c); // 3
-console.log(X.d); // undefined
+console.log(X.c); // undefined
+console.log(X.d); // 4
+console.log(X.e); // undefined
 
 console.log(b);   // 2
 ```
