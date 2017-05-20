@@ -46,3 +46,12 @@ getURL("https://httpbin.org/status/500").then(function onFulfilled(value) {
     console.error(error);
 });
 ```
+
+### Ex.3
+```javascript
+var promise = Promise.resolve($.ajax('https://httpbin.org/get'));// promise 객체를 반환한다.
+
+promise.then(function(value){
+   console.log(value);
+});
+```
