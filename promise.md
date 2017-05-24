@@ -201,3 +201,41 @@ doSomething().then(doSomethingElse());
 
 doSomething().then(doSomethingElse);
 ```
+
+```javascript
+function doSomething(value) {
+    return new Promise(function(resolve, reject){
+	    setTimeout(function() { 
+            console.log("doSomething : value [" + value + "]");
+            resolve("doSomething");
+        }, 2000);
+    });
+}
+
+function doSomethingElse(value) {
+    return new Promise(function(resolve, reject){
+	    setTimeout(function() { 
+            console.log("doSomethingElse : value [" + value + "]");
+            resolve("doSomethingElse");
+        }, 2000);
+    });
+}
+
+function finalHandler(value) {
+    console.log("finalHandler : value [" + value + "]");
+}
+
+doSomething().then(function () {
+    return doSomethingElse();
+}).then(finalHandler);
+
+doSomething().then(function () {
+    doSomethingElse();
+}).then(finalHandler);
+
+doSomething().then(doSomethingElse())
+    .then(finalHandler);
+  
+doSomething().then(doSomethingElse)
+    .then(finalHandler);
+```
