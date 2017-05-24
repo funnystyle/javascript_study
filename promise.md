@@ -1,4 +1,14 @@
-# Javascript Promise
+# Javascript Promise examples
+
+## callback
+```javascript
+getAsync("fileA.txt", function(error, result) {
+    if (error) { // 실패시
+        throw error;
+    }
+    // 성공시
+});
+```
 
 ## ES5
 ```javascript
@@ -30,6 +40,31 @@ sleep(1000).then(function(){
 });
 ```
 
+## workflow
+```javascript
+function asyncFunction() {
+    return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            resolve('Async Hello world');
+        }, 16);
+    });
+}
+
+asyncFunction().then(function (value) {
+    console.log(value); // 'Async Hello world'
+}).catch(function (error) {
+    console.log(error);
+});
+```
+
+```javascript
+asyncFunction().then(function (value) {
+    console.log(value);
+}, function (error) {
+    console.log(error);
+});
+```
+
 ## getURL function (returns Promise Object)
 ```javascript
 function getURL(URL) {
@@ -55,7 +90,7 @@ function getURL(URL) {
 }
 ```
 
-### Ex.1
+### getURL - get
 ```javascript
 getURL("https://httpbin.org/get").then(function onFulfilled(value) {
     console.log("onFulfilled");
@@ -66,7 +101,7 @@ getURL("https://httpbin.org/get").then(function onFulfilled(value) {
 });
 ```
 
-### Ex.2
+### getURL - 500
 ```javascript
 getURL("https://httpbin.org/status/500").then(function onFulfilled(value) {
     console.log("onFulfilled");
@@ -77,11 +112,92 @@ getURL("https://httpbin.org/status/500").then(function onFulfilled(value) {
 });
 ```
 
-### Ex.3
+### getURL - 500 (without catch)
+```javascript
+getURL("https://httpbin.org/status/500").then(function onFulfilled(value) {
+    console.log("onFulfilled");
+    console.log(value);
+}, function onRejected(error) {
+    console.log("onRejected");
+    console.error(error);
+}
+```
+
+### Promise.resolve
+```javascript
+new Promise(function(resolve){
+    resolve(42);
+}).then(function(value){
+    console.log(value);
+});
+
+Promise.resolve(42).then(function(value){
+    console.log(value);
+});
+```
+### thenable - jQuery
 ```javascript
 var promise = Promise.resolve($.ajax('https://httpbin.org/get'));// promise 객체를 반환한다.
 
 promise.then(function(value){
    console.log(value);
 });
+```
+
+### thenable - Q
+```javascript
+var Q = require("Q");
+// 이 promise 객체는 ES6 Promises의 인스턴스이다.
+var promise = new Promise(function(resolve){
+    resolve(1);
+});
+
+// Q promise 객체로 변환
+Q(promise).then(function(value){
+    console.log(value);
+}).finally(function(){
+    console.log("finally");
+});
+```
+
+### Promise.reject
+```javascript
+new Promise(function(resolve, reject){
+    reject(new Error('오류'));
+}).catch(function(error){
+    console.error(error.message); // 오류
+});
+
+Promise.reject(new Error('오류')).catch(function(error){
+    console.error(error.message); // 오류
+});
+```
+
+## Promise.prototype.then
+```javascript
+aPromise.then(function taskA(value){
+    // task A
+}).then(function taskB(vaue){
+    // task B
+}).catch(function onRejected(error){
+    console.log(error);
+});
+```
+
+## Quiz
+
+What is the difference between these four promises?
+
+```javascript
+doSomething().then(function () {
+    return doSomethingElse();
+});
+
+doSomething().then(function () {
+  doSomethingElse();
+});
+
+doSomething().then(doSomethingElse());
+
+doSomething().then(doSomethingElse);
 ```
