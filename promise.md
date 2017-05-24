@@ -1,5 +1,35 @@
 # Javascript Promise
 
+## ES5
+```javascript
+// ES5
+'use strict';
+
+function sleep(callback, msec) {
+  setTimeout(callback, msec);
+}
+
+sleep(function(){
+  console.log('wake!')
+}, 1000);
+```
+
+## ES6
+```javascript
+// ES6
+'use strict';
+
+function sleep(msec) {
+  return new Promise(function(resolve, reject){
+	setTimeout(resolve, msec);
+  });
+}
+
+sleep(1000).then(function(){
+  console.log('wake!');
+});
+```
+
 ## getURL function (returns Promise Object)
 ```javascript
 function getURL(URL) {
