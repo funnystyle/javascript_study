@@ -29,7 +29,7 @@ for (let i = 1; (res = fibonacci(i)) <= 4000000; i++) {
 
 console.log(sum);
 ```
-
+ 
 # Ex.2
 
 http://codingdojang.com/scode/546
