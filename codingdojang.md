@@ -156,3 +156,51 @@ for (let i = 0; i < 17; i++) {
 
 console.log(max);
 ```
+
+# Spiral
+```javascript
+var Matrix = function(rowsize, colsize) {
+	return Array.from(Array(rowsize), (v, k) => Array.from(Array(colsize), () => -1));
+};
+
+Matrix.prototype.getRowCol = function() {
+	return {row : this.length, col : this[0].length};
+}
+
+Matrix.prototype.printMatrix = function() {
+	var {row, col} = this.getRowCol();
+	var maxlength = ("" + (row * col)).length;
+
+	var getspace = function(len, maxlen) {
+		return new Array(maxlen - len + 2).join(" ");
+	};
+
+	var str = "";
+	for (line of this) {
+		for (value of line) {
+			str += getspace(("" + value).length, maxlength) + value;
+		}
+		str += "\n";
+	}
+	console.log(str);
+};
+
+Matrix.prototype.makeSpiral = function() {
+	var {row, col} = this.getRowCol();
+	var [x, y, dx, dy] = [0, 0, 0, 1];
+
+	for (let i = 0; i < row * col; i++) {
+		this[x][y] = i;
+		[x, y] = [x + dx, y + dy];
+		
+		if (!this[x] || !this[x][y] || this[x][y] !== -1 ) {
+			[x, y] = [x - dx, y - dy];
+			[dx, dy] = [dy, -dx];
+			[x, y] = [x + dx, y + dy];
+		}
+	}
+	return this;
+};
+
+new Matrix(6, 6).makeSpiral().printMatrix();
+```
