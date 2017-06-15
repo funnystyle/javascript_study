@@ -241,18 +241,16 @@ var input6 = `#< #  #
 var direction = [[1, 0], [-1, 0], [0, -1], [0, 1]];
 
 var canPass = function(input) {
-    var startrow = 0, startcol = 0;
+    var start = [], dest = [];
     var maze = input.split("\n").map((line, row) => line.trim().split("").map(function(v, col) {
-        if (v === "<") {
-            startrow = row;
-            startcol = col;
-        }
+        (v === "<") ? start = [row, col] : {};
+        (v === ">") ? dest  = [row, col] : {};
     }));
     var rowsize = maze.length;
     var colsize = maze[0].length;
     
     console.log(`rowsize  : ${rowsize}, colsize  : ${colsize}` );
-    console.log(`startrow : ${startrow}, startcol : ${startcol}`);
+    console.log(`start : ${start}, dest : ${dest}`);
 //	var [startrow, startcol] = findStart(maze);
 };
 
@@ -263,4 +261,11 @@ var findStart = function(maze) {
     console.log(`row : ${row}, col : ${col}`);
     return [row, col];
 };
+
+var array1 = [1,2,3,4];
+var array2 = [5,6,7,8];
+
+var sum = array1.map(function (num, idx) {
+  return num + array2[idx];
+}); // [6,8,10,12]
 ```
