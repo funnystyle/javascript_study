@@ -210,57 +210,57 @@ new Matrix(6, 6).makeSpiral().printMatrix();
 var input1 = `<     >`;
 
 var input2 = `########
-			  #<     #
-			  #  ##  #
-			  #  ##  #
-			  #     >#
-			  ########`;
+              #<     #
+              #  ##  #
+              #  ##  #
+              #     >#
+              ########`;
 
 var input3 = `#######
-			  #<    #
-			  ##### #
-			  #     #
-			  # #####
-			  # #   #
-			  # # # #
-			  #   #>#
-			  #######`;
+              #<    #
+              ##### #
+              #     #
+              # #####
+              # #   #
+              # # # #
+              #   #>#
+              #######`;
 
 var input4 = `<   #   >`;
 
 var input5 = `########
-			  #<     #
-			  #     ##
-			  #    #>#
-			  ########`;
+              #<     #
+              #     ##
+              #    #>#
+              ########`;
 
 var input6 = `#< #  #
-			  #  #  #
-			  #  # >#`;
+              #  #  #
+              #  # >#`;
 
 var direction = [[1, 0], [-1, 0], [0, -1], [0, 1]];
 
 var canPass = function(input) {
-	var startrow = 0, startcol = 0;
-	var maze = input.split("\n").map((line, row) => line.trim().split("").map(function(v, col) {
-		if (v === "<") {
-			startrow = row;
-			startcol = col;
-		}
-	}));
-	var rowsize = maze.length;
-	var colsize = maze[0].length;
-	
-	console.log(`rowsize  : ${rowsize}, colsize  : ${colsize}` );
-	console.log(`startrow : ${startrow}, startcol : ${startcol}`);
+    var startrow = 0, startcol = 0;
+    var maze = input.split("\n").map((line, row) => line.trim().split("").map(function(v, col) {
+        if (v === "<") {
+            startrow = row;
+            startcol = col;
+        }
+    }));
+    var rowsize = maze.length;
+    var colsize = maze[0].length;
+    
+    console.log(`rowsize  : ${rowsize}, colsize  : ${colsize}` );
+    console.log(`startrow : ${startrow}, startcol : ${startcol}`);
 //	var [startrow, startcol] = findStart(maze);
 };
 
 var findStart = function(maze) {
-	var index = maze.reduce((a, b) => a.concat(b)).findIndex(v => v =="<");
-	var row = Math.floor(index / maze[0].length);
-	var col = index % maze[0].length;
-	console.log(`row : ${row}, col : ${col}`);
-	return [row, col];
+    var index = maze.reduce((a, b) => a.concat(b)).findIndex(v => v =="<");
+    var row = Math.floor(index / maze[0].length);
+    var col = index % maze[0].length;
+    console.log(`row : ${row}, col : ${col}`);
+    return [row, col];
 };
 ```
