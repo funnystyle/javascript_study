@@ -269,3 +269,39 @@ var sum = array1.map(function (num, idx) {
   return num + array2[idx];
 }); // [6,8,10,12]
 ```
+
+```javascript
+console.log([65,65,133,273,577,3587,577,273,133,65,65].map(v=>(v>>>0).toString(2).slice(1).replace(/0/g," ").replace(/1/g,"*")).join("\n"));
+
+console.log("     *\n     *\n    * *\n   *   *\n  *     *\n**       **\n  *     *\n   *   *\n    * *\n     *\n     *");
+
+
+console.log([65,65,133,273,577,3587].map(v=>(v>>>0).toString(2).slice(1).replace(/0/g," ").replace(/1/g,"*")).join("\n"));
+
+
+function b(n){a="";while(--n)a+=" ";return a+"*";}e="\n",c=[b(6),b(6),b(5)+b(2),b(4)+b(4),b(3)+b(6)];alert(c.join(e)+e+"**"+b(8)+"*"+e+c.reverse().join(e))
+
+b=n=>{a="";while(--n)a+=" ";return a+"*";}
+
+
+
+
+[[5],[5],[4,1],[3,3],[2,4],[0,0,7,0],[2,4],[3,3],[4,1],[5,5]].map(v=>v.map(v=>new String(v)
+
+[5,5,41,33,24,"0070",24,33,41,5,5].map(v=>(""+v).split("").map(v=>
+
+
+
+
+     *
+     *
+    * *
+   *   *
+  *     *
+**       **
+  *     *
+   *   *
+    * *
+     *
+     *
+```
